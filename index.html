@@ -31,7 +31,7 @@
         <p class="paraTwo">Sign up for amazing hiking vacations!</p>
       </div>
       <div class="formContainer">
-        <form class="signupForm" action="signup">
+        <form class="signupForm" action="#" method="POST">
           <ul class="inputContainer">
             <h2 class="formHeading">Let's do this!</h2>
             <div class="formitem">
@@ -39,12 +39,26 @@
                 <label for="firstName" aria-label="required"
                   >First Name *</label
                 >
-                <input type="text" id="firstName" name="first_name" required />
+                <input
+                  type="text"
+                  id="firstName"
+                  name="first_name"
+                  required
+                  pattern="[A-Za-z0-9]+"
+                  title="Please fill out your first name with alphanumeric characters."
+                />
                 <span></span>
               </li>
               <li>
                 <label for="lastName" aria-label="required">Last Name *</label>
-                <input type="text" id="lastName" name="last_name" required />
+                <input
+                  type="text"
+                  id="lastName"
+                  name="last_name"
+                  required
+                  pattern="[A-Za-z0-9]+"
+                  title="Please fill out your last name with alphanumeric characters."
+                />
                 <span></span>
               </li>
             </div>
@@ -56,31 +70,49 @@
               </li>
               <li>
                 <label for="tel">Phone Number</label>
-                <input type="text" id="tel" name="phone_num" />
+                <input
+                  type="tel"
+                  id="tel"
+                  name="phone_num"
+                  pattern="[0-9]{10,}"
+                  title="Please enter a valid UK phone number 10 or more digits."
+                />
               </li>
             </div>
             <div class="formitem">
               <li>
-                <label for="pwd" aria-label="required">Password *</label>
-                <input type="text" id="pwd" name="password" required />
+                <label for="pwd1" aria-label="required">Password *</label>
+                <input
+                  class="error"
+                  type="password"
+                  id="pwd1"
+                  name="password"
+                  required
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                  title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number."
+                />
                 <span></span>
               </li>
               <li>
-                <label for="confirmpwd" aria-label="required"
+                <label for="pwd2" aria-label="required"
                   >Confirm Password *</label
                 >
                 <input
-                  type="text"
-                  id="confirmpwd"
+                  class="error"
+                  type="password"
+                  id="pwd2"
                   name="confirm_pass"
                   required
+                  onkeyup="matchPwd()"
                 />
-                <span></span>
+                <span id="wrong_pass_alert"></span>
               </li>
             </div>
           </ul>
           <div class="btnContainer">
-            <button class="submitBtn">Create Account</button>
+            <button id="create" class="submitBtn" onclick="">
+              Create Account
+            </button>
           </div>
           <div class="txtcontainertwo">
             <p class="paraThree">
